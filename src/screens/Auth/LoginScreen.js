@@ -19,7 +19,8 @@ export default class LoginScreen extends Component {
         return (
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.container}>
-                    {/* Header View */}
+
+                    {/* //? Header View /////////////////////////////// */}
                     <View style={styles.Header_Container}>
                         <Button
                             title={English.Login_Screen_SkipButton}
@@ -28,7 +29,7 @@ export default class LoginScreen extends Component {
                             onPress={() => alert('Skip')} />
                     </View>
 
-                    {/* Bottom View */}
+                   {/* //? Bottom View /////////////////////////// */}
                     <View style={styles.Bottom_Container}>
 
                         <View>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
         backgroundColor: LightTheme.Primary_Color
     },
 
-    ////// Header_Container Styling /////////////
+    //? Header_Container Styling /////////////
     Header_Container: {
         flex: 6,
         backgroundColor: LightTheme.Primary_Color
@@ -92,11 +93,11 @@ const styles = StyleSheet.create({
 
     Skip_Text: {
         fontSize: 14,
-        fontFamily: 'Poppins-Bold',
+        fontFamily: English.Bold_Font,
         color: LightTheme.White_Color
     },
 
-    ////// Bottom_Container Styling /////////////
+    //? Bottom_Container Styling /////////////
     Login_Logo: {
         alignSelf: 'center',
         marginTop: 10
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
 
     Information: {
         textAlign: 'center',
-        fontFamily: 'Poppins-Regular',
+        fontFamily: English.Regular_Font,
         marginHorizontal: 50,
     },
 

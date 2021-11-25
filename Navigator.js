@@ -7,6 +7,7 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import LoginScreen from './src/screens/Auth/LoginScreen'
 import SignUpScreen from './src/screens/Auth/SignUpScreen'
 import SplashScreen from './src/screens/Auth/SplashScreen'
+import OnBoardingScreen from './src/screens/Auth/OnBoardingScreen'
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default class Navigator extends Component {
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     {/* Auth Screens */}
+                    <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS,}} />
                     <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ ...TransitionPresets.SlideFromRightIOS,}} />
                     <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ ...TransitionPresets.SlideFromRightIOS,  }} />
                     <Stack.Screen name="SplashScreen" component={SplashScreen} options={{...TransitionPresets.SlideFromRightIOS,}} />

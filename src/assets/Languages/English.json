@@ -1,8 +1,18 @@
 {
+    "OnBoarding_Next_Button":"Next",
+    "OnBoarding_Skip_Button":"Skip",
+    
     "Login_Screen_SkipButton": "Skip",
     "Login_Screen_Heading": "Login to your account",
     "Login_Screen_Information": "Order online and get all your orders delivered to your door step",
     "Login_Screen_EmailInput": "Email",
     "Login_Screen_LoginButton": "Login to your account",
-    "Login_Screen_CreateButton": "Create new account"
+    "Login_Screen_CreateButton": "Create new account",
+
+    
+    "Signup_Screen_Heading": "Create new account ",
+    "Signup_Screen_Information": "Order online and get all your orders delivered to your door step",
+
+    "Bold_Font": "Poppins-Bold",
+    "Regular_Font": "Poppins-Regular"
 }
