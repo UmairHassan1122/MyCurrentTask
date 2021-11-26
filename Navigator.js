@@ -17,10 +17,10 @@ export default class Navigator extends Component {
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     {/* Auth Screens */}
-                    <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS,}} />
-                    <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ ...TransitionPresets.SlideFromRightIOS,}} />
-                    <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ ...TransitionPresets.SlideFromRightIOS,  }} />
-                    <Stack.Screen name="SplashScreen" component={SplashScreen} options={{...TransitionPresets.SlideFromRightIOS,}} />
+                    <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
