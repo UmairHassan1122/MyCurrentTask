@@ -96,7 +96,6 @@ class First extends Component {
                             bgStyle={styles.Login_Button}
                             txtStyle={styles.Login_Button_Txt}
                             onPress={() => { this.toggleTheme() }} />
-
                         <Button title={English.OnBoarding_Skip_Button}
                             bgStyle={styles.Create_Button}
                             txtStyle={styles.Create_Button_Txt}
