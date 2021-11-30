@@ -1,13 +1,14 @@
 {
-    "Primary_Color": "#fff",
+    "Primary_Color": "#212020",
     "Secondary_Color": "#FF6969",
-    "Primary_Text_Color":"#000",
+    "Primary_Text_Color": "#fff",
     "Secondary_Text_Color": "#000",
     "Primary_Button_Color":"#FF6969",
     "Primary_Button_Text_Color":"#fff",
-    "Secondary_Button_Color":"#fff",
+    "Secondary_Button_Color": "#fff",
     "Secondary_Button_Text_Color":"#000",
-    "Border_Color":"#C1C1C1",
+    "Border_Color": "#fff",
     "Carousel_Bullet_Color":"#FF6969",
     "White_Color":"#fff"
+
 }
