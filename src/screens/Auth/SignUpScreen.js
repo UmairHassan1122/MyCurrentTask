@@ -96,7 +96,7 @@ export default class SignUpScreen extends Component {
                             <MaleIcon name='male' size={20} color={malecolor} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
-                            <Text>Male</Text>
+                            <Text style={{fontFamily:'Poppins-Regular'}}>{English.Signup_Screen_Male}</Text>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10, marginTop: 10, borderLeftWidth: 1 }}>
@@ -112,11 +112,11 @@ export default class SignUpScreen extends Component {
                             <FemaleIcon name='female' size={20} color={femalecolor} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
-                            <Text>Female</Text>
+                            <Text style={{fontFamily:'Poppins-Regular'}}>{English.Signup_Screen_Female}</Text>
                         </View>
                     </View>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 20, marginTop: 10, borderLeftWidth: 1 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 20, marginTop: 10, }}>
                     <View style={{}}>
                         <Checkbox
                             status={termcondition ? 'checked' : 'unchecked'}
@@ -126,17 +126,17 @@ export default class SignUpScreen extends Component {
                         />
                     </View>
                     <View style={{ marginLeft: 0 }}>
-                        <Text>I agree to term & conditions</Text>
+                        <Text>{English.Signup_Screen_TermCondition}</Text>
                     </View>
                 </View>
                 <Button title={English.Signup_Screen_CreateButton}
                     bgStyle={{
                         marginTop: 30,
                         elevation: 3,
-                        backgroundColor: LightTheme.Primary_Color,
+                        backgroundColor:  theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
                     }}
                     txtStyle={{
-                        color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
+                        color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                     }}
                 />
                 <Button title={English.Signup_Screen_LoginButton}

@@ -43,7 +43,7 @@ class First extends Component {
     }
 
     render() {
-
+const {theme} = this.props
         return (
             <View style={{ flex: 1 }}>
 
@@ -57,39 +57,39 @@ class First extends Component {
                         bullets={true}
                         currentPage={this.state.value}
                         onPageBeingChanged={(val) => { this.setState({ value: val }) }}
-                        chosenBulletStyle={{ backgroundColor: this.props.theme ? LightTheme.Carousel_Bullet_Color : DarkTheme.Carousel_Bullet_Color }}
+                        chosenBulletStyle={{ backgroundColor: theme ? LightTheme.Carousel_Bullet_Color : DarkTheme.Carousel_Bullet_Color }}
                         bulletStyle={{ backgroundColor: "grey" }}>
 
                         {/* //TODO /////////////// Carousel  1st Image ////////////// */}
-                        <View style={[{ backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
+                        <View style={[{ backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
 
                             <Image style={{ height: 350, width: '100%', borderBottomRightRadius: 300, borderBottomLeftRadius: 300 }} source={require('../../assets/images/Auth/1.png')} />
                             <View style={{ flex: 1, justifyContent: 'center' }}>
                                 <View style={{ alignSelf: 'center', }}>
-                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}> {this.props.Lang ? "Find anything online" : "آپ کیسے ہو"}</Text>
-                                    <Text style={{ textAlign: 'center', fontFamily: English.Regular_Font, marginHorizontal: 50, marginTop: 10, fontSize: 14, color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>{this.props.Lang ? "Order online and get all your orders delivered to your door step" : "بحرالکاہل اور جنوبی سمندروں کا ایک پرندہ جس کے پر سیاہ سفید اور پنکھ لمبے ہوتے ہیں"}</Text>
+                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}> {this.props.Lang ? "Find anything online" : "آپ کیسے ہو"}</Text>
+                                    <Text style={{ textAlign: 'center', fontFamily: English.Regular_Font, marginHorizontal: 50, marginTop: 10, fontSize: 14, color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>{this.props.Lang ? "Order online and get all your orders delivered to your door step" : "بحرالکاہل اور جنوبی سمندروں کا ایک پرندہ جس کے پر سیاہ سفید اور پنکھ لمبے ہوتے ہیں"}</Text>
                                 </View>
                             </View>
                         </View>
 
                         {/* //TODO /////////////// Carousel  2st Image ////////////// */}
-                        <View style={[{ backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
+                        <View style={[{ backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
                             <Image style={{ height: 350, borderBottomRightRadius: 300, borderBottomLeftRadius: 300, width: '100%' }} source={require('../../assets/images/Auth/2.png')} />
                             <View style={{ flex: 1, justifyContent: 'center' }}>
                                 <View style={{ alignSelf: 'center' }}>
-                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Fast delivery to your door</Text>
-                                    <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 10, fontFamily: English.Regular_Font, marginHorizontal: 50, color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Order online and get all your orders delivered to your door step </Text>
+                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Fast delivery to your door</Text>
+                                    <Text style={{ textAlign: 'center', fontSize: 14, marginTop: 10, fontFamily: English.Regular_Font, marginHorizontal: 50, color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Order online and get all your orders delivered to your door step </Text>
                                 </View>
                             </View>
                         </View>
 
                         {/* //TODO /////////////// Carousel  3st Image ////////////// */}
-                        <View style={[{ backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
+                        <View style={[{ backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, flex: 1, alignItems: "center" }]}>
                             <Image style={{ height: 350, width: '100%', borderBottomRightRadius: 300, borderBottomLeftRadius: 300 }} source={require('../../assets/images/Auth/3.png')} />
                             <View style={{ flex: 1, justifyContent: 'center' }}>
                                 <View style={{ alignSelf: 'center' }}>
-                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Discover the best products</Text>
-                                    <Text style={{ textAlign: 'center', marginTop: 10, fontFamily: English.Regular_Font, fontSize: 14, marginHorizontal: 50, color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Order online and get all your orders delivered to your door step </Text>
+                                    <Text style={{ fontFamily: English.Bold_Font, fontSize: 18, alignSelf: 'center', color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Discover the best products</Text>
+                                    <Text style={{ textAlign: 'center', marginTop: 10, fontFamily: English.Regular_Font, fontSize: 14, marginHorizontal: 50, color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color, }}>Order online and get all your orders delivered to your door step </Text>
                                 </View>
                             </View>
                         </View>
@@ -97,7 +97,7 @@ class First extends Component {
                 </View>
 
                 {/* //TODO //////////////// Bottom View ///////////////////////// */}
-                <View style={{ backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, }}>
+                <View style={{ backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color, }}>
                     <View>
 
                         {/* //TODO ////////////// Next Button ///////////////////// */}
@@ -105,10 +105,10 @@ class First extends Component {
                             bgStyle={{
                                 marginTop: 30,
                                 elevation: 3,
-                                backgroundColor: this.props.theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
+                                backgroundColor: theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
                             }}
                             txtStyle={{
-                                color: this.props.theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
+                                color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                             }}
                             onPress={() => { this.state.value == 2 ? this.moveNext() : this._carousel._animateNextPage() }} />
 
@@ -118,12 +118,12 @@ class First extends Component {
                                 marginTop: 10,
                                 borderWidth: 2,
                                 elevation: 3,
-                                borderColor: this.props.theme ? LightTheme.Border_Color : DarkTheme.Border_Color,
+                                borderColor: theme ? LightTheme.Border_Color : DarkTheme.Border_Color,
                                 marginBottom: 20,
-                                backgroundColor: this.props.theme ? LightTheme.Secondary_Button_Color : DarkTheme.Secondary_Button_Color,
+                                backgroundColor: theme ? LightTheme.Secondary_Button_Color : DarkTheme.Secondary_Button_Color,
                             }}
                             txtStyle={{
-                                color: this.props.theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
+                                color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                             }}
                             onPress={() => this.props.navigation.reset
                                 ({

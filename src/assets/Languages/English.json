@@ -10,6 +10,11 @@
     "Login_Screen_CreateButton": "Create new account",
     "Signup_Screen_Heading": "Create new account ",
     "Signup_Screen_Information": "Order online and get all your orders delivered to your door step",
+    "Signup_Screen_CreateButton":"Next",
+    "Signup_Screen_LoginButton":"Already have an account ? Login",
+    "Signup_Screen_TermCondition":"I agree to term & conditions",
+    "Signup_Screen_Male":"Male",
+    "Signup_Screen_Female":"Female",
     "Bold_Font": "Poppins-Bold",
     "Regular_Font": "Poppins-Regular"
 }

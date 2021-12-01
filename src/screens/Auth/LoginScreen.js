@@ -77,32 +77,19 @@ class LoginScreen extends Component {
         return (
             <ScrollView contentContainerStyle={{
                 flexGrow: 1,
-                backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
+                backgroundColor: theme ? LightTheme.Secondary_Color : DarkTheme.Secondary_Color
             }}>
                 <View style={{
                     flex: 1,
                 }}>
+                    
+                   
                     {/* //TODO Header View /////////////////////////////// */}
                     <View style={{
                         flex: 6,
-                        backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
+                        backgroundColor: theme ? LightTheme.Secondary_Color : DarkTheme.Secondary_Color
                     }}>
-                        <Button
-                            title={English.Login_Screen_SkipButton}
-                            bgStyle={{
-                                alignSelf: 'flex-end',
-                                marginRight: 20,
-                                marginTop: 20,
-                                borderRadius: 5,
-                                paddingTop: 7,
-                                paddingBottom: 4
-                            }}
-                            txtStyle={{
-                                fontSize: 14,
-                                fontFamily: English.Bold_Font,
-                                color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color,
-                            }}
-                            onPress={() => alert('Skip')} />
+                         <Image style={{ height: 250,  width: '100%' ,position:'absolute' }} source={require('../../assets/images/Auth/2.png')} />
                     </View>
                     {/* //TODO Bottom View /////////////////////////// */}
                     <View style={{
@@ -162,10 +149,10 @@ class LoginScreen extends Component {
                             bgStyle={{
                                 marginTop: 30,
                                 elevation: 3,
-                                backgroundColor: LightTheme.Primary_Color,
+                                backgroundColor: theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
                             }}
                             txtStyle={{
-                                color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
+                                color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                             }}
                             onPress={() => this.userLogin()} />
                         <Button title={English.Login_Screen_CreateButton}
@@ -178,7 +165,7 @@ class LoginScreen extends Component {
                                 marginBottom: 20,
                             }}
                             txtStyle={{
-                                color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
+                                color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                             }}
                             onPress={() => this.props.navigation.navigate('SignUpScreen')} />
                         {

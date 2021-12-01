@@ -97,9 +97,9 @@ export default class Navigator extends Component {
         return (
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     {/* Auth Screens */}
                     <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
-                    <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="SignUpScreen" component={SignUpScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="HomeScreen" component={this.MyTabs} options={{ ...TransitionPresets.SlideFromRightIOS, }} />

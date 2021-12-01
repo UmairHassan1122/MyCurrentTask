@@ -14,13 +14,13 @@ const Header = ({ title, iconOnPress,onPress, theme, icon }) => {
                 {title}
             </Text>
 
-            <TouchableOpacity onPress={() => onPress && onPress()}>
+            {/* <TouchableOpacity onPress={() => onPress && onPress()}>
                 <Text style={{
                     fontSize: 14,
                     fontFamily: 'Poppins-Bold',
                     color: LightTheme.Black_Color
                 }}>Skip</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }
