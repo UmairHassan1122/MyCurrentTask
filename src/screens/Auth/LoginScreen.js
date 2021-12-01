@@ -64,9 +64,7 @@ class LoginScreen extends Component {
 
                 }
             })
-            {
 
-            }
 
         }
 
@@ -167,7 +165,13 @@ class LoginScreen extends Component {
                             txtStyle={{
                                 color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                             }}
-                            onPress={() => this.props.navigation.navigate('SignUpScreen')} />
+                            onPress={() => {
+                                this.props.navigation.reset({
+                                    index: 0,
+                                    routes: [{ name: 'SignUpScreen' }],
+                                })
+                            }} />
+
                         {
                             this.state.loginStaus == true ? <ActivityIndicator size="large" color="#0000ff" style={{ position: "absolute", bottom: 150, left: 150 }} /> : null
                         }
