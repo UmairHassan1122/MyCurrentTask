@@ -12,12 +12,13 @@ import LightTheme from '../../assets/Themes/LightTheme.json'
 import DarkTheme from '../../assets/Themes/DarkTheme.json'
 
 const DATA = [
-    { id: 1, Name: "MakeUp", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#FF69B4" },
-    { id: 2, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#8A2BE2" },
-    { id: 3, Name: "Women", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#6495ED" }, 
-    { id: 4, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "yellow" },
-    { id: 4, Name: "men", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red" },
-    { id: 6, Name: "glass", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red" },
+    { id: 1, Name: "MakeUp", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#FF69B4", Rs: "Rs:100" },
+    { id: 2, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#8A2BE2", Rs: "Rs:100" },
+    { id: 3, Name: "Women", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#6495ED", Rs: "Rs:100" },
+    { id: 4, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "yellow", Rs: "Rs:100" },
+    { id: 4, Name: "men", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red", Rs: "Rs:100" },
+    { id: 6, Name: "glass", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red", Rs: "Rs:100" },
+
 ]
 
 export default class Home extends Component {
@@ -77,7 +78,7 @@ export default class Home extends Component {
                                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', marginHorizontal: 16 }}>
                                     <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: 'black', }}>Top Products</Text>
                                     <TouchableOpacity style={{}}>
-                                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-SemiBold',color:'#FF5733' }}>See All</Text>
+                                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-SemiBold', color: '#FF5733' }}>See All</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -85,17 +86,17 @@ export default class Home extends Component {
                     }
                 />
 
-                <View style={{ flex: 1,marginTop:10 }}>
+                <View style={{ flex: 1, marginTop: 10 }}>
                     <FlatList
                         data={DATA}
                         numColumns={2}
                         style={styles.gridView}
                         renderItem={({ item }) => (
-                            <View style={[styles.itemContainer, { elevation: 5, marginBottom: 10, borderRadius: 10, backgroundColor: '#fff' }]}>
+                            <TouchableOpacity style={[styles.itemContainer, { elevation: 5, marginBottom: 10, borderRadius: 10, backgroundColor: '#fff' }]}>
                                 <Image source={{ uri: item.img }} style={{ height: 140, borderRadius: 10, width: '90%', alignSelf: 'center', marginTop: 10 }} />
                                 <Text style={styles.itemName}>{item.Name}</Text>
-                                <Text style={styles.itemCode}>{item.id}</Text>
-                            </View>
+                                <Text style={styles.itemName}>{item.Rs}</Text>
+                            </TouchableOpacity>
                         )}
                     />
                 </View>
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     gridView: {
         marginTop: 0,
         flex: 1, marginHorizontal: 7,
-        marginBottom:20,
+        marginBottom: 20,
     },
     itemContainer: {
         marginHorizontal: 7,
@@ -134,6 +135,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     itemName: {
+        fontFamily: "Poppins-SemiBold",
+        color: "black",
+        marginLeft: 10,
+        marginTop: 5
     },
     itemCode: {
     },

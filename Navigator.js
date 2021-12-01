@@ -50,7 +50,7 @@ export default class Navigator extends Component {
                                     tintColor: focused ? '#e32f45' : 'black'
                                 }}
                             />
-                            <Text style={{ color: focused ? '#e32f45' : 'black', fontSize: 12 }}>Chats</Text>
+                            <Text style={{ color: focused ? '#e32f45' : 'black', fontSize: 12 }}>Home</Text>
                         </View>
                     )
                 }} />
