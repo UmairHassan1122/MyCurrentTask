@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Text, View, ScrollView, Image, FlatList, TouchableOpacity, Dimensions, StyleSheet, StatusBar } from 'react-native'
 const { width, height } = Dimensions.get('window');
 import Carousel from 'react-native-looped-carousel';
+import LightTheme from '../assets/Themes/LightTheme.json'
+import DarkTheme from '../assets/Themes/DarkTheme.json'
+
 const DATA = [{ id: 1, Name: "MakeUp", image: require('../assets/images/Lipstick.png'), Color: "#FF69B4" }, { id: 2, Name: "Electronic", image: require('../assets/images/Electronic.png'), Color: "#8A2BE2" }, { id: 3, Name: "Women", image: require('../assets/images/Women.png'), Color: "#6495ED" }, { id: 4, Name: "Electronic", image: require('../assets/images/download.png'), Color: "yellow" }, { id: 5, Name: "Electronic", image: require('../assets/images/download.png'), Color: "red" },]
 export default class RenderCategory extends React.Component {
 
@@ -14,10 +17,10 @@ export default class RenderCategory extends React.Component {
         return (
             <View>
                 <View style={{ height: 140, marginBottom: 10 }}>
-                    <View style={{ marginLeft: 10, marginTop: 10, flexDirection: "row", justifyContent: "space-between" }}>
-                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black' }}>Categories</Text>
-                        <TouchableOpacity onPress={() => { this.props.navi.navigate("Categories") }} style={{ marginRight: 10 }}>
-                            <Text style={{ fontSize: 14, fontWeight: 'bold', color: 'black' }}>See All</Text>
+                    <View style={{ marginHorizontal: 16, marginTop: 10, flexDirection: "row", justifyContent: "space-between", alignItems: 'center' }}>
+                        <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: 'black' }}>Categories</Text>
+                        <TouchableOpacity onPress={() => { this.props.navi.navigate("Categories") }} style={{}}>
+                            <Text style={{ fontSize: 14, fontFamily: 'Poppins-SemiBold',color:'#FF5733' }}>See All</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -33,14 +36,14 @@ export default class RenderCategory extends React.Component {
                                 renderItem={({ item, index }) => (
                                     <TouchableOpacity style={{ marginLeft: 8, marginRight: 8 }}
                                         onPress={() => { }} >
-                                        <View style={{ width: 70, height: 70, borderRadius: 35, backgroundColor: item.Color, justifyContent: "center", alignItems: "center" }}>
+                                        <View style={{ width: 60, height: 60, borderRadius: 35, backgroundColor: item.Color, justifyContent: "center", alignItems: "center" }}>
                                             <Image
                                                 source={item.image}
-                                                style={{ width: 70, height: 70, borderRadius: 50, }} />
+                                                style={{ width: 60, height: 60, borderRadius: 50, }} />
 
                                         </View>
-                                        <View style={{ justifyContent: "center", alignItems: "center" }}>
-                                            <Text>{item.Name}</Text>
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 5, }}>
+                                            <Text style={{ fontFamily: 'Poppins-Regular', color: '#000' }}>{item.Name}</Text>
                                         </View>
 
                                     </TouchableOpacity>
@@ -50,7 +53,13 @@ export default class RenderCategory extends React.Component {
                     </View>
 
                 </View>
-                <View>
+                <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', marginHorizontal: 16 }}>
+                    <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: 'black', }}>Featured</Text>
+                    <TouchableOpacity style={{}}>
+                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-SemiBold',color:'#FF5733' }}>See All</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{marginTop:10}}>
                     <Carousel
                         delay={20000}
                         style={{ height: 190 }}
@@ -58,8 +67,8 @@ export default class RenderCategory extends React.Component {
                         bullets={true}
                         currentPage={this.state.value}
                         onPageBeingChanged={(val) => { this.setState({ value: val }) }}
-                        chosenBulletStyle={{ backgroundColor: "green" }}
-                        bulletStyle={{ backgroundColor: "green" }}
+                        chosenBulletStyle={{ backgroundColor: LightTheme.Secondary_Color }}
+                        bulletStyle={{ backgroundColor: "grey" }}
                     >
 
                         <View style={[{ backgroundColor: "#483D8B", flex: 1, marginHorizontal: 15, borderRadius: 15, marginTop: 2, height: 150, elevation: 5 }]}>

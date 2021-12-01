@@ -6,32 +6,20 @@ import { Badge, TextInput } from 'react-native-paper';
 import Search from '../../reuseable/SearchBar'
 import Carousel from 'react-native-looped-carousel';
 import { FlatGrid } from 'react-native-super-grid';
-const DATA = [{ id: 1, Name: "MakeUp", image: require('../../assets/images/Lipstick.png'), Color: "#FF69B4" }, { id: 2, Name: "Electronic", image: require('../../assets/images/Electronic.png'), Color: "#8A2BE2" }, { id: 3, Name: "Women", image: require('../../assets/images/Women.png'), Color: "#6495ED" }, { id: 4, Name: "Electronic", image: require('../../assets/images/download.png'), Color: "yellow" }, { id: 5, Name: "Electronic", image: require('../../assets/images/download.png'), Color: "red" },]
 const { width, height } = Dimensions.get('window');
 import RenderCategory from '../../reuseable/RenderCatogories'
+import LightTheme from '../../assets/Themes/LightTheme.json'
+import DarkTheme from '../../assets/Themes/DarkTheme.json'
 
-const data = [
-    { name: 'TURQUOISE', code: '#1abc9c' },
-    { name: 'EMERALD', code: '#2ecc71' },
-    { name: 'PETER RIVER', code: '#3498db' },
-    { name: 'AMETHYST', code: '#9b59b6' },
-    { name: 'WET ASPHALT', code: '#34495e' },
-    { name: 'GREEN SEA', code: '#16a085' },
-    { name: 'NEPHRITIS', code: '#27ae60' },
-    { name: 'BELIZE HOLE', code: '#2980b9' },
-    { name: 'WISTERIA', code: '#8e44ad' },
-    { name: 'MIDNIGHT BLUE', code: '#2c3e50' },
-    { name: 'SUN FLOWER', code: '#f1c40f' },
-    { name: 'CARROT', code: '#e67e22' },
-    { name: 'ALIZARIN', code: '#e74c3c' },
-    { name: 'CLOUDS', code: '#ecf0f1' },
-    { name: 'CONCRETE', code: '#95a5a6' },
-    { name: 'ORANGE', code: '#f39c12' },
-    { name: 'PUMPKIN', code: '#d35400' },
-    { name: 'POMEGRANATE', code: '#c0392b' },
-    { name: 'SILVER', code: '#bdc3c7' },
-    { name: 'ASBESTOS', code: '#7f8c8d' },
-];
+const DATA = [
+    { id: 1, Name: "MakeUp", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#FF69B4" },
+    { id: 2, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#8A2BE2" },
+    { id: 3, Name: "Women", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "#6495ED" }, 
+    { id: 4, Name: "Electronic", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "yellow" },
+    { id: 4, Name: "men", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red" },
+    { id: 6, Name: "glass", img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80', Color: "red" },
+]
+
 export default class Home extends Component {
 
     state = {
@@ -41,32 +29,32 @@ export default class Home extends Component {
     };
     render() {
         return (
-
-            <View >
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <StatusBar
                     animated={true}
                     backgroundColor="#FFFAF0"
                     barStyle={'dark-content'} />
-                <View style={{ height: 90, width: "100%", backgroundColor: "#FFFAF0", borderBottomLeftRadius: 30, borderBottomRightRadius: 30, justifyContent: "center" }}>
-                    <View style={{ flexDirection: "row" }}>
-                        <View style={{ flex: 1, marginLeft: 20 }}>
-                            <Image source={require('../../assets/images/download.png')} style={{ height: 50, width: 50 }} />
+                <View style={{ height: 120, width: "100%", backgroundColor: LightTheme.Secondary_Color, borderBottomLeftRadius: 30, borderBottomRightRadius: 30, }}>
+                    <View style={{ flexDirection: "row", justifyContent: 'space-between', marginHorizontal: 20, marginTop: 15 }}>
+                        <View style={{}}>
+                            <Image source={require('../../assets/images/download.png')} style={{ height: 35, width: 35, borderRadius: 25 }} />
                         </View>
-                        <View style={{ marginLeft: 10, flex: 1 }}>
+
+                        <View style={{}}>
                             <View>
-                                <View style={{ flexDirection: "row" }}>
-                                    <Icon name="location-outline" size={30} />
-                                    <Text style={{ fontSize: 18 }}>Deliver to</Text>
+                                <View style={{ flexDirection: "row", alignItems: 'center', marginLeft: 5 }}>
+                                    <Icon name="location-outline" size={20} color='#000' />
+                                    <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: LightTheme.Primary_Text_Color, marginTop: 3 }}>Deliver to</Text>
                                 </View>
                                 <View style={{ flexDirection: "row" }}>
-                                    <Text style={{ fontSize: 18, fontWeight: "bold", color: "black" }}>Khartoum , </Text>
-                                    <Text style={{ fontSize: 18, fontWeight: "bold", color: "black" }}>Barry</Text>
+                                    <Text style={{ fontSize: 18, fontFamily: 'Poppins-Regular', color: "black" }}>Khartoum, </Text>
+                                    <Text style={{ fontSize: 18, fontFamily: 'Poppins-Regular', color: "black" }}>Barry</Text>
                                 </View>
                             </View>
                         </View>
 
-                        <View style={{ width: 60, height: 60, marginLeft: 70, marginRight: 15, backgroundColor: "white", alignItems: "center", justifyContent: "center", borderRadius: 30 }}>
-                            <Badge size={12} style={{ position: "absolute", right: 4, top: 4 }}></Badge>
+                        <View style={{ width: 35, height: 35, backgroundColor: "white", alignItems: "center", justifyContent: "center", borderRadius: 30 }}>
+                            <Badge size={12} style={{ position: "absolute", right: 0, top: 0 }}></Badge>
                             <MaterialIcons name="notifications-none" size={30} />
                             {/* <Image source={require('../../assets/images/download.png')} style={{ height: 50, width: 50, borderRadius: 25 }} /> */}
                         </View>
@@ -80,33 +68,39 @@ export default class Home extends Component {
                     <Search />
                 </View>
 
-                <ScrollView>
+                <FlatList
+                    data={DATA}
+                    ListHeaderComponent={
+                        <View>
+                            <View>
+                                <RenderCategory navi={this.props.navigation} />
+                                <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center', marginHorizontal: 16 }}>
+                                    <Text style={{ fontSize: 18, fontFamily: 'Poppins-Bold', color: 'black', }}>Top Products</Text>
+                                    <TouchableOpacity style={{}}>
+                                        <Text style={{ fontSize: 14, fontFamily: 'Poppins-SemiBold',color:'#FF5733' }}>See All</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                    }
+                />
+
+                <View style={{ flex: 1,marginTop:10 }}>
                     <FlatList
                         data={DATA}
-                        ListHeaderComponent={
-                            <View>
-                                <View>
-                                    <RenderCategory navi={this.props.navigation} />
-                                    <View style={{ marginLeft: 10, flexDirection: "row", justifyContent: "space-between" }}>
-                                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black' }}>Top Products</Text>
-                                        <TouchableOpacity style={{ marginRight: 10 }}>
-                                            <Text style={{ fontSize: 14, fontWeight: 'bold', color: 'black' }}>See All</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-
+                        numColumns={2}
+                        style={styles.gridView}
+                        renderItem={({ item }) => (
+                            <View style={[styles.itemContainer, { elevation: 5, marginBottom: 10, borderRadius: 10, backgroundColor: '#fff' }]}>
+                                <Image source={{ uri: item.img }} style={{ height: 140, borderRadius: 10, width: '90%', alignSelf: 'center', marginTop: 10 }} />
+                                <Text style={styles.itemName}>{item.Name}</Text>
+                                <Text style={styles.itemCode}>{item.id}</Text>
                             </View>
-
-                        }
-                        renderItem={({ item }) => (<RenderProducts item={item} />)}
-                    // keyExtractor={item => item.Mname.toString()}
-                    // ItemSeparatorComponent={this.ItemSeparator}
+                        )}
                     />
-                </ScrollView>
+                </View>
 
-
-
-            </View>
+            </ScrollView>
         )
     }
 }
@@ -116,53 +110,31 @@ export default class Home extends Component {
 
 
 
-class RenderProducts extends React.Component {
+// class RenderProducts extends React.Component {
 
-    render() {
-        return (
-
-            <View style={{ height: 190 }}>
-                <FlatGrid
-                    itemDimension={130}
-                    data={DATA}
-                    style={styles.gridView}
-                    spacing={10}
-                    renderItem={({ item }) => (
-                        <View style={[styles.itemContainer, { backgroundColor: "red" }]}>
-                            <Text style={styles.itemName}>{item.Name}</Text>
-                            <Text style={styles.itemCode}>{item.id}</Text>
-                        </View>
-                    )}
-                />
-            </View>
+//     render() {
+//         return (
 
 
 
-        )
-    }
-}
+//         )
+//     }
+// }
 
 
 const styles = StyleSheet.create({
     gridView: {
-        marginTop: 15,
-        flex: 1
+        marginTop: 0,
+        flex: 1, marginHorizontal: 7,
+        marginBottom:20,
     },
     itemContainer: {
-        justifyContent: 'flex-end',
-        borderRadius: 5,
-        padding: 10,
-        height: 140,
-
+        marginHorizontal: 7,
+        justifyContent: 'space-between',
+        flex: 1
     },
     itemName: {
-        fontSize: 16,
-        color: '#fff',
-        fontWeight: '600',
     },
     itemCode: {
-        fontWeight: '600',
-        fontSize: 12,
-        color: '#fff',
     },
 });

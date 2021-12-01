@@ -152,7 +152,7 @@ export default class SignUpScreen extends Component {
                             <MaleIcon name='male' size={20} color={male ? 'red' : 'grey'} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
-                            <Text style={{fontFamily:'Poppins-Regular'}}>{English.Signup_Screen_Male}</Text>
+                            <Text style={{ fontFamily: 'Poppins-Regular' }}>{English.Signup_Screen_Male}</Text>
                         </View>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 10, marginTop: 10, borderLeftWidth: 1 }}>
@@ -169,7 +169,7 @@ export default class SignUpScreen extends Component {
                             <FemaleIcon name='female' size={20} color={female ? 'red' : 'grey'} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
-                            <Text style={{fontFamily:'Poppins-Regular'}}>{English.Signup_Screen_Female}</Text>
+                            <Text style={{ fontFamily: 'Poppins-Regular' }}>{English.Signup_Screen_Female}</Text>
                         </View>
                     </View>
                 </View>
@@ -190,7 +190,7 @@ export default class SignUpScreen extends Component {
                     bgStyle={{
                         marginTop: 20,
                         elevation: 3,
-                        backgroundColor:  theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
+                        backgroundColor: theme ? LightTheme.Primary_Button_Color : DarkTheme.Primary_Button_Color,
                     }}
                     txtStyle={{
                         color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
