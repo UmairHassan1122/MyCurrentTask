@@ -46,8 +46,6 @@ class LoginScreen extends Component {
             dataRequest.sendPostDataRequest(Routes.SIGNIN, bodyParams, (response) => {
                 if (response.status) {
                     const prefs = new PrefHandler()
-
-
                     prefs.createSession(response.data, response.token, (isCreated) => {
                         if (isCreated) {
                             this.setState({ loginStaus: false })
