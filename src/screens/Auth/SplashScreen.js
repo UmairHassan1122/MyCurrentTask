@@ -10,7 +10,7 @@ export default class SplashScreen extends Component {
                 setTimeout(() => {
                     this.props.navigation.reset({
                         index: 0,
-                        routes: [{ name: 'LoginScreen' }],
+                        routes: [{ name: 'HomeScreen' }],
                     });
                 }, 2000);
             }

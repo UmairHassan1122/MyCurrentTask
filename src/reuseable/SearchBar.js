@@ -32,7 +32,7 @@ export default class Search extends Component {
             <View>
                 <SearchBar
                     height={50}
-                    fontSize={20}
+                    fontSize={16}
                     fontColor="#fdfdfd"
                     iconColor="#fdfdfd"
                     shadowColor="#282828"
@@ -42,7 +42,7 @@ export default class Search extends Component {
                     fontFamily="BurbankBigCondensed-Black"
 
                     onChangeText={this.handleOnChangeText}
-                    style={{ height: 60, borderRadius: 30, marginTop: -12, backgroundColor: "white", elevation: 3, borderColor: "grey" }}
+                    style={{ height: 50, borderRadius: 30, marginTop: -30, backgroundColor: "white", elevation: 3, borderColor: "grey" }}
                 />
             </View>
         );
