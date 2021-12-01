@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Image, } from 'react-native'
+import { Text, View, ScrollView, Image, ActivityIndicator } from 'react-native'
 import LightTheme from '../../assets/Themes/LightTheme.json'
 import DarkTheme from '../../assets/Themes/DarkTheme.json'
 import English from '../../assets/Languages/English.json'
@@ -11,18 +11,65 @@ import EmailIcon from 'react-native-vector-icons/Ionicons'
 import MaleIcon from 'react-native-vector-icons/Fontisto'
 import FemaleIcon from 'react-native-vector-icons/Fontisto'
 import { Checkbox } from 'react-native-paper';
+import Routes from '../../data/remote/Routes'
+import WebHandler from '../../data/remote/WebHandler'
+import PrefHandler from '../../data/local/PrefHandler'
 export default class SignUpScreen extends Component {
     constructor() {
         super()
-        this.state = {
-            email: '',
-            name: '',
-            male: false,
-            female: false,
-            malecolor: '',
-            femalecolor: '',
-            termcondition: false
+
+    }
+    state = {
+        email: '',
+        name: '',
+        password: '',
+        male: false,
+        female: false,
+        malecolor: false,
+        femalecolor: false,
+        termcondition: false,
+        SignUpStaus: false
+    }
+    userSignUp = () => {
+        if (this.state.name == "") {
+            alert("Name is Required")
         }
+        else if (this.state.email == "") {
+            alert("Email Fields Are Required")
+        }
+        else if (this.state.password == "") {
+            alert("Password is Required")
+        }
+        else {
+            var bodyParams = new FormData();
+            bodyParams.append("email", this.state.email);
+            bodyParams.append("password", 123456);
+            this.setState({ SignUpStaus: true })
+            dataRequest.sendPostDataRequest(Routes.SIGNIN, bodyParams, (response) => {
+                if (response.status) {
+                    const prefs = new PrefHandler()
+
+
+                    prefs.createSession(response.data, response.token, (isCreated) => {
+                        if (isCreated) {
+                            this.setState({ loginStaus: false })
+                            this.props.navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'HomeScreen' }],
+                            });
+                        } else {
+                            alert("something went wrong..")
+                            this.setState({ loginStaus: false })
+                        }
+                    })
+
+
+                }
+            })
+            alert("Done")
+        }
+
+
     }
     render() {
         const { male, female, femalecolor, malecolor, termcondition } = this.state
@@ -65,8 +112,7 @@ export default class SignUpScreen extends Component {
                 </View>
                 <Input title='Name'
                     bgStyle={{
-                        marginTop: 30,
-                        paddingBottom: 5,
+                        marginTop: 10,
                         paddingTop: 5,
                     }}
                     icon={<EmailIcon name={"mail-outline"} size={25} color={LightTheme.Black_Color} />}
@@ -74,13 +120,21 @@ export default class SignUpScreen extends Component {
                 />
                 <Input title='Email'
                     bgStyle={{
-                        marginTop: 15,
-                        paddingBottom: 5,
+                        marginTop: 5,
                         paddingTop: 5,
                     }}
                     icon={<EmailIcon name={"mail-outline"} size={25} color={LightTheme.Black_Color} />}
                     keyboardType='email-address'
                     onChange={(txt) => this.setState({ email: txt })}
+                />
+                <Input title='Password'
+                    bgStyle={{
+                        marginTop: 5,
+                        paddingTop: 5,
+                    }}
+                    icon={<EmailIcon name={"mail-outline"} size={25} color={LightTheme.Black_Color} />}
+                    keyboardType='email-address'
+                    onChange={(txt) => this.setState({ password: txt })}
                 />
                 <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 20, marginTop: 10 }}>
@@ -88,12 +142,14 @@ export default class SignUpScreen extends Component {
                             <Checkbox
                                 status={male ? 'checked' : 'unchecked'}
                                 onPress={() => {
-                                    this.setState({ male: !male, female: false, malecolor: male ? 'grey' : 'red', femalecolor: female ? 'red' : 'grey', });
+                                    this.setState({ male: !male, female: false, malecolor: true, femalecolor: false });
+
+
                                 }}
                             />
                         </View>
                         <View>
-                            <MaleIcon name='male' size={20} color={malecolor} />
+                            <MaleIcon name='male' size={20} color={male ? 'red' : 'grey'} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
                             <Text>Male</Text>
@@ -104,12 +160,13 @@ export default class SignUpScreen extends Component {
                             <Checkbox
                                 status={female ? 'checked' : 'unchecked'}
                                 onPress={() => {
-                                    this.setState({ female: !female, male: false, femalecolor: female ? 'grey' : 'red', malecolor: male ? 'red' : 'grey' });
+                                    this.setState({ female: !female, male: false, femalecolor: true, malecolor: false });
+
                                 }}
                             />
                         </View>
                         <View>
-                            <FemaleIcon name='female' size={20} color={femalecolor} />
+                            <FemaleIcon name='female' size={20} color={female ? 'red' : 'grey'} />
                         </View>
                         <View style={{ marginLeft: 5 }}>
                             <Text>Female</Text>
@@ -131,14 +188,14 @@ export default class SignUpScreen extends Component {
                 </View>
                 <Button title={English.Signup_Screen_CreateButton}
                     bgStyle={{
-                        marginTop: 30,
+                        marginTop: 20,
                         elevation: 3,
                         backgroundColor: LightTheme.Primary_Color,
                     }}
                     txtStyle={{
                         color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                     }}
-                />
+                    onPress={() => this.userSignUp()} />
                 <Button title={English.Signup_Screen_LoginButton}
                     bgStyle={{
                         marginTop: 10,
@@ -152,7 +209,15 @@ export default class SignUpScreen extends Component {
                         color: '#000'
                         // color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                     }}
-                    onPress={() => this.props.navigation.navigate('LoginScreen')} />
+                    onPress={() => {
+                        this.props.navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'LoginScreen' }],
+                        })
+                    }} />
+                {
+                    this.state.SignUpStaus == true ? <ActivityIndicator size="large" color="#0000ff" style={{ position: "absolute", bottom: 150, left: 150 }} /> : null
+                }
             </ScrollView>
         )
     }
