@@ -80,14 +80,14 @@ class LoginScreen extends Component {
                 <View style={{
                     flex: 1,
                 }}>
-                    
-                   
+
+
                     {/* //TODO Header View /////////////////////////////// */}
                     <View style={{
                         flex: 6,
                         backgroundColor: theme ? LightTheme.Secondary_Color : DarkTheme.Secondary_Color
                     }}>
-                         <Image style={{ height: 250,  width: '100%' ,position:'absolute' }} source={require('../../assets/images/Auth/2.png')} />
+                        <Image style={{ height: 250, width: '100%', position: 'absolute' }} source={require('../../assets/images/Auth/2.png')} />
                     </View>
                     {/* //TODO Bottom View /////////////////////////// */}
                     <View style={{
