@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View,  Image, Dimensions,} from 'react-native'
+import { Text, View, Image, Dimensions, } from 'react-native'
 import Carousel from 'react-native-looped-carousel';
 import Button from '../../reuseable/Button';
 import English from '../../assets/Languages/English.json'
@@ -19,7 +19,7 @@ class First extends Component {
     moveNext = () => {
         this.props.navigation.reset({
             index: 0,
-            routes: [{ name: 'Second' }],
+            routes: [{ name: 'LoginScreen' }],
         });
     }
 
@@ -34,13 +34,16 @@ class First extends Component {
         const layout = e.nativeEvent.layout;
         this.setState({ size: { width: layout.width, height: layout.height } });
     }
-    
+
     toggleTheme = () => {
+
         this.props.updateTheme(!this.props.theme)
+
         // this.props.updateLanguage(!this.props.Lang)
     }
 
     render() {
+
         return (
             <View style={{ flex: 1 }}>
 
@@ -49,6 +52,7 @@ class First extends Component {
                     <Carousel
                         delay={1000}
                         style={this.state.size}
+                        ref={e => this._carousel = e}
                         autoplay={false}
                         bullets={true}
                         currentPage={this.state.value}
@@ -106,7 +110,7 @@ class First extends Component {
                             txtStyle={{
                                 color: this.props.theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                             }}
-                            onPress={() => { this.toggleTheme() }} />
+                            onPress={() => { this.state.value == 2 ? this.moveNext() : this._carousel._animateNextPage() }} />
 
                         {/* //TODO ///////////// Skip Button /////////////////////// */}
                         <Button title={English.OnBoarding_Skip_Button}
@@ -121,10 +125,11 @@ class First extends Component {
                             txtStyle={{
                                 color: this.props.theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                             }}
-                            onPress={() => this.props.navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'LoginScreen' }],
-                            })} />
+                            onPress={() => this.props.navigation.reset
+                                ({
+                                    index: 0,
+                                    routes: [{ name: 'LoginScreen' }],
+                                })} />
                     </View>
                 </View>
             </View>

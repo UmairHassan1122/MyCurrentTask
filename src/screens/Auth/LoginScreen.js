@@ -1,44 +1,91 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Image } from 'react-native'
+import { Text, View, ScrollView, Image, ActivityIndicator } from 'react-native'
 import English from '../../assets/Languages/English.json'
 import LightTheme from '../../assets/Themes/LightTheme.json'
-import DarkTheme from '../../assets/Themes/DarkTheme.json'
+import DarkTheme from '../../assets/Themes/LightTheme.json'
 import Button from '../../reuseable/Button'
 import Input from '../../reuseable/Input'
 import EmailIcon from 'react-native-vector-icons/Ionicons'
 import { connect } from 'react-redux';
+import Routes from '../../data/remote/Routes'
+import WebHandler from '../../data/remote/WebHandler'
+import PrefHandler from '../../data/local/PrefHandler'
+
+const dataRequest = new WebHandler()
+
 
 class LoginScreen extends Component {
 
     constructor() {
         super()
-        this.state = {
-            email: '',
-            checked: false,
-            value: 0
+
+    }
+    state = {
+        email: '',
+        checked: false,
+        password: "",
+        value: 0,
+        loginStaus: false
+    }
+
+
+    userLogin = () => {
+        var bodyParams = new FormData();
+        if (this.state.email == "") {
+            alert("Email is Required")
+            return
         }
+        else if (this.state.password == "") {
+            alert("Password is Required")
+            return
+        }
+        else {
+            bodyParams.append("email", this.state.email);
+            bodyParams.append("password", 123456);
+            this.setState({ loginStaus: true })
+            dataRequest.sendPostDataRequest(Routes.SIGNIN, bodyParams, (response) => {
+                if (response.status) {
+                    const prefs = new PrefHandler()
+
+
+                    prefs.createSession(response.data, response.token, (isCreated) => {
+                        if (isCreated) {
+                            this.setState({ loginStaus: false })
+                            this.props.navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'HomeScreen' }],
+                            });
+                        } else {
+                            alert("something went wrong..")
+                            this.setState({ loginStaus: false })
+                        }
+                    })
+
+
+                }
+            })
+            {
+
+            }
+
+        }
+
     }
-
-
-    toggleTheme = () => {
-        this.props.updateTheme(!this.props.theme)
-        // this.props.updateLanguage(!this.props.Lang)
-    }
-
     render() {
+        const { email, password, checked, value } = this.state
+        const { theme } = this.props
         return (
             <ScrollView contentContainerStyle={{
                 flexGrow: 1,
-                backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
+                backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
             }}>
                 <View style={{
                     flex: 1,
                 }}>
-
-                    {/* //? Header View /////////////////////////////// */}
+                    {/* //TODO Header View /////////////////////////////// */}
                     <View style={{
                         flex: 6,
-                        backgroundColor: this.props.theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
+                        backgroundColor: theme ? LightTheme.Primary_Color : DarkTheme.Primary_Color
                     }}>
                         <Button
                             title={English.Login_Screen_SkipButton}
@@ -53,18 +100,16 @@ class LoginScreen extends Component {
                             txtStyle={{
                                 fontSize: 14,
                                 fontFamily: English.Bold_Font,
-                                color: this.props.theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color,
+                                color: theme ? LightTheme.Primary_Text_Color : DarkTheme.Primary_Text_Color,
                             }}
                             onPress={() => alert('Skip')} />
                     </View>
-
-                    {/* //? Bottom View /////////////////////////// */}
+                    {/* //TODO Bottom View /////////////////////////// */}
                     <View style={{
                         borderTopLeftRadius: 30,
                         borderTopRightRadius: 30,
-                        backgroundColor: this.props.theme ? LightTheme.White_Color : DarkTheme.White_Color
+                        backgroundColor: theme ? LightTheme.White_Color : DarkTheme.White_Color
                     }}>
-
                         <View>
                             <Image
                                 source={require('../../assets/images/Auth/Logo.png')}
@@ -76,26 +121,23 @@ class LoginScreen extends Component {
                                     marginBottom: 10
                                 }} />
                         </View>
-
                         <Text style={{
                             alignSelf: 'center',
                             fontFamily: 'Poppins-Bold',
                             fontSize: 20,
                             marginBottom: 20,
-                            color: this.props.theme ? LightTheme.Secondary_Text_Color : DarkTheme.Secondary_Text_Color,
+                            color: theme ? LightTheme.Secondary_Text_Color : DarkTheme.Secondary_Text_Color,
                         }}>
                             {English.Login_Screen_Heading}
                         </Text>
-
                         <Text style={{
                             textAlign: 'center',
                             fontFamily: English.Regular_Font,
                             marginHorizontal: 50,
-                            color: this.props.theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
+                            color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                         }}>
                             {English.Login_Screen_Information}
                         </Text>
-
                         <Input title='Email'
                             bgStyle={{
                                 marginTop: 30,
@@ -106,7 +148,16 @@ class LoginScreen extends Component {
                             keyboardType='email-address'
                             onChange={(txt) => this.setState({ email: txt })}
                         />
-
+                        <Input title='Password'
+                            bgStyle={{
+                                marginTop: 10,
+                                paddingBottom: 5,
+                                paddingTop: 5,
+                            }}
+                            icon={<EmailIcon name={"mail-outline"} size={25} color={LightTheme.Black_Color} />}
+                            keyboardType='email-address'
+                            onChange={(txt) => this.setState({ password: txt })}
+                        />
                         <Button title={English.Login_Screen_LoginButton}
                             bgStyle={{
                                 marginTop: 30,
@@ -114,10 +165,9 @@ class LoginScreen extends Component {
                                 backgroundColor: LightTheme.Primary_Color,
                             }}
                             txtStyle={{
-                                color: this.props.theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
+                                color: theme ? LightTheme.Secondary_Button_Text_Color : DarkTheme.Secondary_Button_Text_Color,
                             }}
-                            onPress={() => this.toggleTheme()} />
-
+                            onPress={() => this.userLogin()} />
                         <Button title={English.Login_Screen_CreateButton}
                             bgStyle={{
                                 marginTop: 10,
@@ -128,23 +178,24 @@ class LoginScreen extends Component {
                                 marginBottom: 20,
                             }}
                             txtStyle={{
-                                color: this.props.theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
+                                color: theme ? LightTheme.Primary_Button_Text_Color : DarkTheme.Primary_Button_Text_Color,
                             }}
                             onPress={() => this.props.navigation.navigate('SignUpScreen')} />
+                        {
+                            this.state.loginStaus == true ? <ActivityIndicator size="large" color="#0000ff" style={{ position: "absolute", bottom: 150, left: 150 }} /> : null
+                        }
+
                     </View>
                 </View>
             </ScrollView>
         )
     }
 }
-
 const mapStateToProps = (state) => {
-
     // alert(JSON.stringify(state.Lang.language))
     return {
         Lang: state.Lang.language,
         theme: state.Theme.theme,
-
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -153,5 +204,4 @@ const mapDispatchToProps = (dispatch) => {
         updateLanguage: (value) => dispatch({ type: 'UPDATE_Language', mode: value }),
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
