@@ -15,6 +15,8 @@ import SplashScreen from './src/screens/Auth/SplashScreen'
 import OnBoardingScreen from './src/screens/Auth/OnBoardingScreen'
 import Home from './src/screens/Home/Home';
 import Profile from './src/screens/Home/Profile';
+import Addresses from './src/screens/Address/Address'
+import AddNewAddress from './src/screens/Address/AddNewAddress'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -98,6 +100,9 @@ export default class Navigator extends Component {
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     {/* Auth Screens */}
+
+                    <Stack.Screen name="Address" component={Addresses} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="AddNewAddress" component={AddNewAddress} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
