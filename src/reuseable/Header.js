@@ -2,15 +2,15 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import LightTheme from '../assets/Themes/LightTheme.json'
 
-const Header = ({ title, iconOnPress,onPress, theme, icon }) => {
+const Header = ({ title, iconOnPress, onPress, theme, icon, txtStyle }) => {
 
     return (
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: 20, marginTop: 20 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 20, marginTop: 20 }}>
             <TouchableOpacity onPress={() => iconOnPress && iconOnPress()}>
                 {icon}
             </TouchableOpacity>
 
-            <Text>
+            <Text style={{ ...txtStyle }}>
                 {title}
             </Text>
 

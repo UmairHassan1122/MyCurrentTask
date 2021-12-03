@@ -6,14 +6,14 @@ const Input = ({ bgStyle, onChange, icon, title, keyboardType }) => {
     const [value, setValue] = useState("")
 
     return (
-        <View style={{ backgroundColor: "#fff", borderRadius: 30, marginHorizontal: 20, elevation: 5, flexDirection: 'row', alignItems: 'center', ...bgStyle }}>
+        <View style={{ backgroundColor: "#fff", borderRadius: 30, marginHorizontal: 16, elevation: 5, flexDirection: 'row', alignItems: 'center', ...bgStyle }}>
 
             <View style={{ marginLeft: 10 }}>
                 {icon}
             </View>
 
             <TextInput
-                style={{ padding: 8, flex: 1, fontFamily: 'Poppins-Regular',marginTop:5 }}
+                style={{ padding: 8, flex: 1, fontFamily: 'Poppins-Regular', marginTop: 5 }}
                 value={value}
                 placeholder={title}
                 keyboardType={keyboardType}

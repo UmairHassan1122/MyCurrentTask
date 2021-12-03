@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { check, PERMISSIONS, RESULTS, request } from 'react-native-permissions';
@@ -8,6 +8,10 @@ import Geocoder from 'react-native-geocoder';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import English from '../../assets/Languages/English.json'
 const { width, height } = Dimensions.get('window');
+import Button from '../../reuseable/Button'
+import LightTheme from '../../assets/Themes/LightTheme.json'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 class Home extends React.Component {
 
     componentDidMount() {
@@ -35,7 +39,7 @@ class Home extends React.Component {
 
     state = {
         pickupCords: { latitude: 28.4212, longitude: 70.2989, latitudeDelta: 0.0922, longitudeDelta: 0.0421, Address: "Rahim Yar Khan, Punjab, Pakistan" }, droplocationCords: { latitude: 31.5204, longitude: 74.3587, latitudeDelta: 0.0922, longitudeDelta: 0.0421, },
-        Distance: 0, Time: 0, hasLocationPermission: false
+        Distance: 0, Time: 0, hasLocationPermission: false, address: ""
 
     }
 
@@ -60,8 +64,8 @@ class Home extends React.Component {
 
     getAddress = (lat, lng) => {
         Geocoder.geocodePosition({ lat, lng }).then(response => {
-            alert(JSON.stringify(response[0].formattedAddress))
-            this.setState({ pickupCords: { latitude: lat, longitude: lng, latitudeDelta: 0.3, longitudeDelta: 0.8, Address: response[0].formattedAddress } })
+            // alert(JSON.stringify(response[0].formattedAddress))
+            this.setState({ pickupCords: { latitude: lat, longitude: lng, latitudeDelta: 0.3, longitudeDelta: 0.8, Address: response[0].formattedAddress }, address: response[0].formattedAddress })
 
 
 
@@ -71,32 +75,53 @@ class Home extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <View style={{ height: 40, width: "100%", marginTop: 10 }}>
-                    <GooglePlacesAutocomplete
-                        placeholder="search"
-                        fetchDetails={true}
-                        GooglePlacesSearchQuery={{
-                            rankby: "distance"
-                        }}
+                {/* <View style={{ flexDirection: "row", marginTop: 30, justifyContent: "space-evenly" }}>
+                    <TouchableOpacity style={{ justifyContent: "center", alignItems: "center", marginRight: 40, backgroundColor: "white", height: 40, width: 40, borderRadius: 20 }}>
+                        <Text style={{ fontSize: 18 }}>x</Text>
+                    </TouchableOpacity>
+                    <Text style={{ fontSize: 18, fontFamily: "Poppins-SemiBold", marginRight: 70, color: "black" }}>Add Address</Text>
+                </View> */}
+                {/* <View style={{ height: 40, width: "100%", marginTop: 10, borderRadius: 35 }}> */}
+                {/* <MaterialIcons name="notifications-none" size={30} /> */}
+                <GooglePlacesAutocomplete
+                    placeholder="Choose location"
+                    fetchDetails={true}
+                    enableHighAccuracyLocation={true}
+                    // renderRow={results => 
+                    //     {
+                    //     if (results.isPredefinedPlace) {
+                    //         return (
+                    //             <>
+                    //                 <Image source="https://i.ya-webdesign.com/images/transparent-pin-google-2.png" style={{ width: 15, height: 25 }} />
+                    //                 <Text>{results.description}</Text>
+                    //             </>
+                    //         );
+                    //     } else {
+                    //         return <Text>{results.description}</Text>
+                    //     }
+                    // }}
+                    GooglePlacesSearchQuery={{
+                        rankby: "distance"
+                    }}
 
-                        onPress={(data, details = null) => {
-                            this.getAddress(details.geometry.location.lat, details.geometry.location.lng);
+                    onPress={(data, details = null) => {
+                        this.getAddress(details.geometry.location.lat, details.geometry.location.lng);
 
 
-                        }}
-                        query={{
-                            key: English.Google_Key,
-                            language: 'en',
-                            components: "country:pak",
-                            types: "establishment",
-                        }}
+                    }}
+                    query={{
+                        key: English.Google_Key,
+                        language: 'en',
+                        components: "country:pak",
+                        types: "establishment",
+                    }}
 
-                        styles={{
+                    styles={{
 
-                            container: { flex: 0, position: "absolute", width: "100%", zIndex: 1 }, listView: { backgroundColor: "white" }
-                        }}
-                    />
-                </View>
+                        container: { flex: 0, zIndex: 1, marginHorizontal: 10, marginTop: 12 }, listView: { backgroundColor: "white" }
+                    }}
+                />
+
                 <View style={{ flex: 4 }}>
                     <MapView style={StyleSheet.absoluteFillObject}
                         initialRegion={this.state.pickupCords}
@@ -115,9 +140,19 @@ class Home extends React.Component {
                         />
                     </MapView>
                 </View>
-                <View style={{ flex: 1, justifyContent: "center", flexDirection: "row", alignItems: "center", backgroundColor: "red", borderTopRightRadius: 15, borderTopLeftRadius: 15 }}>
-                    <Text style={{ marginLeft: 30, color: "white" }}>{this.state.Distance} km</Text>
-                    <Text style={{ marginLeft: 30, color: "white" }}>{(this.state.Time / 60).toFixed(2)} hrs</Text>
+                <View style={{ flex: 1, backgroundColor: "white", borderTopRightRadius: 15, borderTopLeftRadius: 15 }}>
+                    <Text style={{ marginLeft: 10, marginTop: 20, fontFamily: "Poppins-SemiBold" }}>Deliver to :</Text>
+                    <Text style={{ marginLeft: 10, color: "red", marginTop: 5 }}>{this.state.address} </Text>
+                    <Button title={English.Addrss_Screen_AddButton}
+                        bgStyle={{
+                            marginTop: 10,
+                            elevation: 3,
+                            backgroundColor: LightTheme.Primary_Button_Color,
+                        }}
+                        txtStyle={{
+                            color: LightTheme.Primary_Button_Text_Color
+                        }}
+                        onPress={() => { this.props.navigation.navigate("AllAddresses") }} />
                 </View>
             </View>
         )

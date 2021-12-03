@@ -5,6 +5,9 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/dist/AntDesign';
 import Categories from './src/screens/Home/Categories';
+import Testing from './src/Tsting'
+import ChangeAddress from './src/screens/Address/ChangeAddress';
+
 
 
 
@@ -15,7 +18,7 @@ import SplashScreen from './src/screens/Auth/SplashScreen'
 import OnBoardingScreen from './src/screens/Auth/OnBoardingScreen'
 import Home from './src/screens/Home/Home';
 import Profile from './src/screens/Home/Profile';
-import Addresses from './src/screens/Address/Address'
+import AllAddresses from './src/screens/Address/AllAddresses';
 import AddNewAddress from './src/screens/Address/AddNewAddress'
 
 const Stack = createStackNavigator();
@@ -100,8 +103,8 @@ export default class Navigator extends Component {
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{ headerShown: false }}>
                     {/* Auth Screens */}
-
-                    <Stack.Screen name="Address" component={Addresses} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="ChangeAddress" component={ChangeAddress} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
+                    <Stack.Screen name="AllAddresses" component={AllAddresses} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="AddNewAddress" component={AddNewAddress} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
                     <Stack.Screen name="OnBoardingScreen" component={OnBoardingScreen} options={{ ...TransitionPresets.SlideFromRightIOS, }} />
